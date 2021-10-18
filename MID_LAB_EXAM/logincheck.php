@@ -4,6 +4,7 @@
 	if(isset($_POST['submit'])){
 		$id = $_POST['id'];
 		$password = $_POST['password'];
+		$name;
 
 		if($id != ""){
 			if($password != ""){
@@ -14,7 +15,7 @@
 					$user = explode('|', $data);
 					if(trim($user[0]) == $id && trim($user[1]) == $password){
 						setcookie('flag', 'true', time()+3600, '/');
-						header('location: home.php');
+						header('location: home.php?name='.$user[2]);
 					}
 				}
 

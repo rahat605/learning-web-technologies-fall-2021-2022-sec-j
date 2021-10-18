@@ -10,7 +10,19 @@
 	<title>Home Page</title>
 </head>
 <body>
-	<h1>Welcome Home!</h1>
+	 <?php
+
+	if (isset ($_REQUEST['name']))
+	{
+		$name=$_REQUEST['name'];
+		echo "<h1>Welcome ".$_REQUEST['name']."</h1>";
+
+
+	}
+	
+	?>
+
+	<br>
 	<a href="logout.php"> logout</a>
 </body>
 </html>
