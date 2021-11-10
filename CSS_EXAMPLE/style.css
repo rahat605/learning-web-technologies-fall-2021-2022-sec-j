@@ -1,0 +1,62 @@
+
+#d1{
+	position: fixed;
+
+	position: relative;
+	background:white;
+	width: 200px;
+	height: 320px;
+	border: 2px solid #000
+}
+#d2{
+	position: fixed;
+
+	position: relative;
+	background:white;
+	width: 200px;
+	height: 320px;
+	border: 2px solid #000
+}
+
+.c1{
+	position: absolute;
+	left: 10px;
+	top: 280px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid rgb(233, 17, 17);
+	border-radius: 100px;
+}
+
+.c2{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 180px;
+	height: 100px;
+}
+.t1{
+	position: absolute;
+	left: 10px;
+	top: 120px;
+	width: 180px;
+	height: 100px;
+}
+.t2{
+	position: absolute;
+	left: 50px;
+	top: 270px;
+}
+.t3{
+	position: absolute;
+	left: 40px;
+	top: 140px;
+}
+
+.c4{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 180px;
+	height: 100px;
+}
