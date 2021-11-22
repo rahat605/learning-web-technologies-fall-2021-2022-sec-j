@@ -1,74 +1,44 @@
-body{
-	font-family: 'Open Sans',sans-serif;
-	background-color: black;
+.container {
+    max-width: 400px;
+    margin: 10vh auto 0 auto;
+    box-shadow: 0px 0px 43px 17px rgba(153,153,153,1);
 }
-#container{
-	width: 1000px;
-	height: 550px;
-	margin: 20px auto;	
+
+#display {
+    text-align: right;
+    height: 70px;
+    line-height: 70px;
+    padding: 16px 8px;
+    font-size: 25px;
 }
-#calculator{
-	width: 320px;
-	height: 520px;
-	background-color: #eaedef;
-	margin: 0 auto;
-	top: 20px;
-	position: relative;
+
+.buttons {
+    display: grid;
+    border-bottom: 0px solid #999;
+    border-left: 0px solid#999;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-#result{
-	height: 120px;
+
+.buttons > div {
+    border-top: 0px solid #999;
+    border-right: 0px solid#999;
 }
-#history{
-	text-align: right;
-	height: 20px;
-	margin: 0 20px;
-	padding-top: 20px;
-	font-size: 15px;
-	color: #919191;
+
+.button {
+    border: 0px solid #999;
+    line-height: 100px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
 }
-#output{
-	text-align: right;
-	height: 60px;
-	margin: 10px 20px;
-	font-size: 30px;
+
+#equal {
+    background-color: rgb(133, 128, 128);
+    color: white;
 }
-#keyboard{
-	height: 400px;
-}
-.operator, .number, .empty{
-	width: 50px;
-	height: 50px;
-	margin: 15px;
-	float: left;
-	border-width: 0;
-	font-weight: bold;
-	font-size: 15px;
-}
-.number, .empty{
-	background-color: #eaedef;
-}
-.number, .operator{
-	cursor: pointer;
-}
-.operator:active, .number:active{
-	font-size: 13px;
-}
-.operator:focus, .number:focus, .empty:focus{
-	outline: 0;
-}
-button:nth-child(4){
-	font-size: 20px;
-}
-button:nth-child(8){
-	font-size: 20px;
-}
-button:nth-child(12){
-	font-size: 20px;
-}
-button:nth-child(16){
-	font-size: 20px;
-}
-button:nth-child(20){
-	font-size: 20px;
-	background-color: #a09fa1;
+
+.button:hover {
+    background-color: #323330;
+    color: white;
+    transition: 0.5s ease-in-out;
 }
