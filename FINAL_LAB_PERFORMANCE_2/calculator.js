@@ -1,49 +1,111 @@
-let display = document.getElementById('display');
+let resultElement = document.getElementById("result");
+let resultPrevElement = document.getElementById("resultPrev");
+let operatorElement = document.getElementById("operator");
+function btn(key) {
+  console.log(key);
+  if (!isNaN(key)) {
+    let res = resultElement.innerHTML;
+    resultElement.innerHTML = res == 0 ? key : res + key;
+  } else if (key == ".") {
+    indexOperator = resultElement.innerHTML.indexOf("+");
+    if (!resultElement.innerHTML.includes(".")) {
+      resultElement.innerHTML += ".";
+    } else {
+      
+    }
+  } else {
+    if (key == "+" || key == "-" || key == "*" || key == "/" || key == "=") {
+      switch (operatorElement.innerHTML) {
+        case "+":
+          getResult(
+            Number(resultPrevElement.innerHTML),
+            Number(resultElement.innerHTML),
+            "add",
+            key
+          );
+          break;
+        case "-":
+          getResult(
+            Number(resultPrevElement.innerHTML),
+            Number(resultElement.innerHTML),
+            "sub",
+            key
+          );
+          break;
+        case "*":
+          getResult(
+            Number(resultPrevElement.innerHTML),
+            Number(resultElement.innerHTML),
+            "mul",
+            key
+          );
+          break;
+        case "/":
+          getResult(
+            Number(resultPrevElement.innerHTML),
+            Number(resultElement.innerHTML),
+            "div",
+            key
+          );
+          break;
+        case "":
+          resultPrevElement.innerHTML = resultElement.innerHTML;
+          operatorElement.innerHTML = key;
+          resultElement.innerHTML = 0;
+          break;
+        case "=":
+          resultPrevElement.innerHTML = resultElement.innerHTML;
+          operatorElement.innerHTML = key;
+          resultElement.innerHTML = "0";
+          break;
+      }
+    } else {
+      switch (key) {
+        case "CE":
+          resultPrevElement.innerHTML = "";
+          operatorElement.innerHTML = "=";
+          break;
+        case "C":
+          resultElement.innerHTML = "0";
+          resultPrevElement.innerHTML = "";
+          operatorElement.innerHTML = "";
+          break;
+        case "DEL":
+          resultElement.innerHTML = resultElement.innerHTML.slice(0, -1);
+          break;
+        case "+/-":
+          if (resultElement.innerHTML.charAt(0) == "-") {
+            resultElement.innerHTML = resultElement.innerHTML.substr(1);
+          } else {
+            resultElement.innerHTML = "-" + resultElement.innerHTML;
+          }
+          break;
+      }
+    }
+  }
+}
 
-let buttons = Array.from(document.getElementsByClassName('button'));
+function hideElementsForEqual(key) {
+  if (key == "=") {
+    resultElement.innerHTML = resultPrevElement.innerHTML;
+    resultPrevElement.innerHTML = "";
+    operatorElement.innerHTML = "=";
+  }
+}
 
-buttons.map( button => {
-    button.addEventListener('click', (e) => {
-        switch(e.target.innerText){
-            case 'C':
-                display.innerText = '';
-                break;
-            case '=':
-                try{
-                    display.innerText = eval(display.innerText);
-                } catch {
-                    display.innerText = "Error"
-                }
-                break;
-            case '←':
-                if (display.innerText){
-                   display.innerText = display.innerText.slice(0, -1);
-                }
-                break;
-            case 'CE':
-                    if (display.innerText){
-                       display.innerText = display.innerText.slice(0, -1);
-                    }
-                    break;
-            default:
-                display.innerText += e.target.innerText;
-        }
-    });
-});
+function getResult(num1, num2, operator, key) {
+  let xhttp = new XMLHttpRequest();
 
-function ajax(){
+  xhttp.open("POST", "calculator.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("num1=" + num1 + "&&num2=" + num2 + "&&operator=" + operator);
 
-	let buttons = document.getElementsById('equal').value;
-	let xhttp= new XMLHttpRequest();
-
-	xhttp.open('POST', 'calculator.php', true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send('equal='+equal);
-
-	xhttp.onreadystatechange = function(){
-
-		if(this.readyState == 4 && this.status == 200){
-			document.getElementById('h1').innerHTML = this.responseText;		
-		}
-	}
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      resultPrevElement.innerHTML = this.responseText;
+      resultElement.innerHTML = 0;
+      operatorElement.innerHTML = key;
+      hideElementsForEqual(key);
+    }
+  };
 }

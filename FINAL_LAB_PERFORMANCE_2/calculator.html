@@ -1,38 +1,53 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <section>
-        <div class="container">
-            <div id="display"></div>
-            <div class="buttons">
-                <div class="button">CE</div>
-                <div class="button">C</div>
-                <div class="button">&larr;</div>
-                <div class="button">/</div>
-                <div class="button">7</div>
-                <div class="button">8</div>
-                <div class="button">9</div>
-                <div class="button">*</div>
-                <div class="button">4</div>
-                <div class="button">5</div>
-                <div class="button">6</div>
-                <div class="button">-</div>
-                <div class="button">1</div>
-                <div class="button">2</div>
-                <div class="button">3</div>
-                <div class="button">+</div>
-                <div class="button">+/-</div>
-                <div class="button">0</div>
-                <div class="button">.</div>
-                <div id="equal" name="equal" class="button">=</div>
-            </div>
-        </div>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan="4" id="resultPrev"></td>
+      </tr>
+      <tr>
+        <td colspan="4" id="operator"></td>
+      </tr>
+      <tr>
+        <td colspan="4" id="result">0</td>
+      </tr>
+      <tr>
+        <td><button onclick="btn('CE')">CE</button></td>
+        <td><button onclick="btn('C')">C</button></td>
+        <td><button onclick="btn('DEL')">DEL</button></td>
+        <td><button onclick="btn('/')">/</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="btn('7')">7</button></td>
+        <td><button onclick="btn('8')">8</button></td>
+        <td><button onclick="btn('9')">9</button></td>
+        <td><button onclick="btn('*')">*</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="btn('4')">4</button></td>
+        <td><button onclick="btn('5')">5</button></td>
+        <td><button onclick="btn('6')">6</button></td>
+        <td><button onclick="btn('-')">-</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="btn('1')">1</button></td>
+        <td><button onclick="btn('2')">2</button></td>
+        <td><button onclick="btn('3')">3</button></td>
+        <td><button onclick="btn('+')">+</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="btn('+/-')">+/-</button></td>
+        <td><button onclick="btn('0')">0</button></td>
+        <td><button onclick="btn('.')">.</button></td>
+        <td><button onclick="btn('=')">=</button></td>
+      </tr>
+    </table>
     <script src="calculator.js"></script>
-</body>
+  </body>
 </html>
